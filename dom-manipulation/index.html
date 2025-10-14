@@ -5,24 +5,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dynamic Quote Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        #notification {
+            background: #d4edda;
+            border: 1px solid #155724;
+            color: #155724;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        #quote-container div {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Dynamic Quote Generator</h1>
 
-    <select id="categoryFilter" onchange="filterQuotes()">
-        <option value="all">All Categories</option>
+    <div id="notification"></div>
+
+    <label for="filter">Filter by category</label>
+    <select id="filter">
+        <option value="All">All</option>
+        <option value="Server">Server</option>
+        <option value="Local">Local</option>
     </select>
 
-    <div id="quoteDisplay"></div>
+    <div id="quote-container"></div>
 
-    <div>
-        <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
-        <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
-        <button onclick="addQuote()">Add Quote</button>
-    </div>
+    <button id="new-quote-btn">Show New Quote</button>
+    <button id="sync-btn">Sync with Server</button>
 
-    <button id="newQuote">Show New Quote</button>
+    <h2>Add a Quote</h2>
+    <form id="add-quote-form">
+        <input type="text" id="quote-text" placeholder="Quote text" required />
+        <input type="text" id="author" placeholder="Author" required />
+        <input type="text" id="category" placeholder="Category" required />
+        <button type="submit">Add Quote</button>
+    </form>
 
     <script src="script.js"></script>
 </body>
