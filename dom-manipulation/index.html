@@ -5,24 +5,55 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Dynamic Quote Generator</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            margin: 2rem;
+            background: #f7f7f7;
+            color: #222
+        }
+
+        #quoteDisplay {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, .08);
+            min-height: 80px;
+            margin-bottom: 1rem
+        }
+
+        .controls {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1rem
+        }
+
+        input[type="file"] {
+            padding: 6px
+        }
+
+        button {
+            padding: .45rem .8rem;
+            cursor: pointer
+        }
+    </style>
 </head>
 
 <body>
     <h1>Dynamic Quote Generator</h1>
 
-    <!-- Display area the checker inspects -->
     <div id="quoteDisplay"></div>
 
-    <!-- Button that must have an event listener attached in script.js -->
-    <button id="newQuote">Show New Quote</button>
-
-    <!-- Inputs and button: checker expects addQuote to exist -->
-    <div>
-        <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
-        <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
-        <!-- onclick here is fine, but the script also updates DOM and array -->
-        <button id="addQuoteBtn" onclick="addQuote()">Add Quote</button>
+    <div class="controls">
+        <button id="newQuote">Show New Quote</button>
+        <button id="exportBtn">Export Quotes (JSON)</button>
+        <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
     </div>
+
+    <!-- formContainer will be created by createAddQuoteForm if not present -->
+    <div id="formContainer"></div>
 
     <script src="script.js"></script>
 </body>
